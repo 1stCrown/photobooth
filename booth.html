@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Photo Booth</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="back-gradient" class="back-gradient centered"></div> <!-- Background gradient -->
+
+    <!-- LAYOUT SELECTION -->
+    <div id="layout-selection" class="flex-column gap-30 centered">
+        <!-- Title -->
+        <div class="flex-column">
+            <img src="assets/logo/logo.png" alt="Photo Booth Logo" class="logo" style="width: auto; height: 75px;">
+            <h1 class="bold">Choose your layout</h1>
+        </div>
+
+        <!-- Layout Options -->
+        <div class="flex-row gap-50">
+            <!--<button class="nav-button"><img src="assets/icons/left.svg" class="nav_icon"></button>-->
+            <div id="layout-options" class="flex-row gap-50" style="width: 1552px; overflow:hidden; padding:1px;"></div>
+            <!--<button class="nav-button"><img src="assets/icons/right.svg" class="nav_icon"></button>-->
+        </div>
+    </div>
+
+    <!-- CAMERA MODE -->
+    <div>
+        <video id="camera-bg" class="hidden" autoplay playsinline></video>
+
+        <div id="booth-menu" class="booth-options flex-row gap-10 bottom-centered hidden">
+            <img src="assets/logo/logo.png" alt="Photo Booth Logo" class="logo" style="width: auto; height: 75px;">
+            <div style="width: 2px; height: 100%; background-color: #000000;"></div>
+            <div>
+                <div id="set-timer-dropdown" class="set-timer hidden">
+                    <div id="10 sec" value="10 sec" class="set-timer-option">
+                        <h3 class="bold">10 SECONDS</h3>
+                    </div>
+                    <div class="v-line"></div>
+                    <div id="5 sec" value="5 sec" class="set-timer-option">
+                        <h3 class="bold">5 SECONDS</h3>
+                    </div>
+                    <div class="v-line"></div>
+                    <div id="3 sec" value="3 sec" class="set-timer-option">
+                        <h3 class="bold">3 SECONDS</h3>
+                    </div>
+                </div>
+
+                <div>
+                    <div id="selected" value="N/A" class="set-timer set-timer-option">
+                        <h3 id="set-timer-text" class="bold">SET TIMER</h3>
+                    </div>
+                </div>
+
+            </div>
+            <div id="capture" class="capture">
+                <h3 class="bold font-white">CAPTURE</h3>
+            </div>
+        </div>
+
+        <h5 id="timer" class="centered font-white hidden">FLASH</h5>
+
+        <div id="flash" class="flash hidden"></div>
+    </div>
+
+    <!-- CANVAS -->
+    <canvas id="canvas" class="hidden"></canvas>
+
+    <!-- PREVIEW -->
+    
+    <div id="preview" style="width: 90%; height: 90%;" class="centered flex-row gap-50 hidden">
+        <div id="card-preview" class="layout-box" style="height:100%; aspect-ratio: 2/6;"></div>
+        <div class="flex-column gap-50" style="height: 100%; width: 100%;">
+            <div class="menu-3" style="height: 100%; width: 100%;"></div>
+            <div style="width: 100%;" class="menu-2 flex-row gap-10"></div>
+        </div>
+    </div>
+
+    <script>
+        // LAYOUT SELECTION
+        const layoutOptions = document.getElementById("layout-options");
+        const layoutSelection = document.getElementById("layout-selection");
+        const backgroundGradient = document.getElementById("back-gradient");
+        // CAMERA MODE
+        const video = document.getElementById("camera-bg");
+        const boothMenu = document.getElementById("booth-menu");
+        const timerDropdown = document.getElementById("selected");
+        const timerOptions = document.getElementById("set-timer-dropdown");
+        const timerText = document.getElementById("timer");
+        const flash = document.getElementById("flash");
+        const photos = [];
+        selectedTime = 0;
+        const timers = {
+            10: document.getElementById("10 sec"),
+            5: document.getElementById("5 sec"),
+            3: document.getElementById("3 sec"),
+        };
+        // PREVIEW
+        const preview = document.getElementById("preview");
+        const previewCard = document.getElementById("card-preview");
+    </script>
+    <script src="scripts/layout_map.js"></script> <!-- LAYOUT MAP -->
+    <script src="scripts/layout.js"></script> <!-- LAYOUT SELECTION -->
+    <script src="scripts/camera.js"></script> <!-- CAMERA-->
+    <script src="scripts/preview.js"></script> <!-- PREVIEW-->
+
+
+
+</body>
+
+</html>
