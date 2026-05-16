@@ -44,3 +44,25 @@ function buildPreviewCard(){
         previewCard.appendChild(div);
     }
 }
+
+
+
+//SAVE PHOTO
+
+
+
+//RETAKE PHOTO
+retakePhoto.addEventListener("click", function(){
+    HideLayout();
+    HidePreview();
+    ShowCamera();
+});
+
+
+//BACK TO LAYOUT
+backToLayout.addEventListener("click", function(){
+    HidePreview();
+    HideCamera();
+    ShowLayout();
+});
+

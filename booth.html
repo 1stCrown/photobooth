@@ -59,7 +59,7 @@
                 </div>
 
             </div>
-            <div id="capture" class="capture">
+            <div id="capture" class="primary-button-2">
                 <h3 class="bold font-white">CAPTURE</h3>
             </div>
         </div>
@@ -73,37 +73,55 @@
     <canvas id="canvas" class="hidden"></canvas>
 
     <!-- PREVIEW -->
-    
     <div id="preview" style="width: 90%; height: 90%;" class="centered flex-row gap-50 hidden">
         <div id="card-preview" class="layout-box" style="height:100%; aspect-ratio: 2/6;"></div>
         <div class="flex-column gap-50" style="height: 100%; width: 100%;">
-            <div class="menu-3" style="height: 100%; width: 100%;"></div>
-            <div style="width: 100%;" class="menu-2 flex-row gap-10"></div>
+            <div class="menu-3"></div>
+            <div style="width: 100%;" class="menu-2 flex-row gap-10">
+                <div id="back-to-layout" class="button-2">
+                    <h3 class="bold font-black">BACK TO LAYOUT</h3>
+                </div>
+                <div id="retake-photo" class="button-2">
+                    <h3 class="bold font-black">RETAKE PHOTO</h3>
+                </div>
+                <div id="save-photo" class="primary-button-2">
+                    <h3 class="bold font-white">SAVE PHOTO</h3>
+                </div>
+                <div id="back-to-layout"></div>
+            </div>
         </div>
+    </div>
+
+    <!-- SAVE PHOTO --> 
+    <div id="save-photo-screen" class="centered flex-column gap-30 hidden">
+        
     </div>
 
     <script>
         // LAYOUT SELECTION
-        const layoutOptions = document.getElementById("layout-options");
-        const layoutSelection = document.getElementById("layout-selection");
+        const layoutOptions =      document.getElementById("layout-options");
+        const layoutSelection =    document.getElementById("layout-selection");
         const backgroundGradient = document.getElementById("back-gradient");
         // CAMERA MODE
-        const video = document.getElementById("camera-bg");
-        const boothMenu = document.getElementById("booth-menu");
-        const timerDropdown = document.getElementById("selected");
-        const timerOptions = document.getElementById("set-timer-dropdown");
-        const timerText = document.getElementById("timer");
-        const flash = document.getElementById("flash");
+        const video =              document.getElementById("camera-bg");
+        const boothMenu =          document.getElementById("booth-menu");
+        const timerDropdown =      document.getElementById("selected");
+        const timerOptions =       document.getElementById("set-timer-dropdown");
+        const timerText =          document.getElementById("timer");
+        const flash =              document.getElementById("flash");
         const photos = [];
         selectedTime = 0;
         const timers = {
-            10: document.getElementById("10 sec"),
-            5: document.getElementById("5 sec"),
-            3: document.getElementById("3 sec"),
+            10:                    document.getElementById("10 sec"),
+            5:                     document.getElementById("5 sec"),
+            3:                     document.getElementById("3 sec"),
         };
         // PREVIEW
-        const preview = document.getElementById("preview");
-        const previewCard = document.getElementById("card-preview");
+        const preview =            document.getElementById("preview");
+        const previewCard =        document.getElementById("card-preview");
+        const backToLayout =       document.getElementById("back-to-layout");
+        const retakePhoto =        document.getElementById("retake-photo");
+        const savePhoto =          document.getElementById("save-photo");
     </script>
     <script src="scripts/layout_map.js"></script> <!-- LAYOUT MAP -->
     <script src="scripts/layout.js"></script> <!-- LAYOUT SELECTION -->

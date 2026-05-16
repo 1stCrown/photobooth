@@ -92,7 +92,7 @@ function ShowCamera(){
 
 // HIDE PREVIEW
 function HidePreview(){
-
+    preview.classList.add("hidden")
 }
 // SHOW PREVIEW
 function ShowPreview(){
