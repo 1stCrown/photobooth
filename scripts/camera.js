@@ -35,7 +35,7 @@ document.getElementById("capture").addEventListener("click", async function () {
     for (let i = layouts[selectedLayout].shots; i > 0; i--) {
 
         console.log(i);
-        /*
+        
         timerText.textContent = "CAMERA";
         timerText.classList.remove('hidden');
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -46,14 +46,14 @@ document.getElementById("capture").addEventListener("click", async function () {
         timerText.textContent = "FLASH";
         flash.classList.remove("hidden");
         flash.style.animation = "flashFade 600ms ease-out";
-        */
+        
         TakePicture();
-        /*
+        
         await new Promise(resolve => setTimeout(resolve, 500));
         flash.classList.add("hidden");
         await new Promise(resolve => setTimeout(resolve, 500));
         timerText.classList.add('hidden');
-        */
+        
     }
 
     HideCamera();
