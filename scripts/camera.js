@@ -17,14 +17,14 @@ for (const [key, timer] of Object.entries(timers)) {
         selectedTime = key;
         console.log("Selected Time: " + selectedTime);
 
-        timerDropdown.classList.remove("hidden");
-        timerOptions.classList.add("hidden");
+        timerDropdown.classList.remove("removed");
+        timerOptions.classList.add("removed");
     })
 }
 
 timerDropdown.addEventListener("click", function () {
-    timerOptions.classList.remove("hidden");
-    timerDropdown.classList.add("hidden");
+    timerOptions.classList.remove("removed");
+    timerDropdown.classList.add("removed");
 })
 
 //CAPTURE
@@ -44,13 +44,13 @@ document.getElementById("capture").addEventListener("click", async function () {
             await new Promise(resolve => setTimeout(resolve, 1000));
         }
         timerText.textContent = "FLASH";
-        flash.classList.remove("hidden");
+        flash.classList.remove("removed");
         flash.style.animation = "flashFade 600ms ease-out";
         
         TakePicture();
         
         await new Promise(resolve => setTimeout(resolve, 500));
-        flash.classList.add("hidden");
+        flash.classList.add("removed");
         await new Promise(resolve => setTimeout(resolve, 500));
         timerText.classList.add('hidden');
         

@@ -29,7 +29,7 @@ for (const [key, layout] of Object.entries(layouts)) {
     const textInfo = document.createElement("div");
     textInfo.style.justifyItems = "center";
 
-    const fontName = document.createElement("h4");
+    const fontName = document.createElement("h6");
     fontName.classList.add("semi-bold");
     fontName.textContent = layout.font;
     textInfo.appendChild(fontName);
