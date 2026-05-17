@@ -93,10 +93,22 @@
     </div>
 
     <!-- SAVE PHOTO --> 
-    <div id="save-photo-screen" class="centered flex-column gap-30 hidden">
-        
+    <div id="save-photo-screen" class="centered flex-row gap-50 hidden" style="width:90%; height:90%;">
+        <div class="qr-card">
+            <div class="blank-photo qr" id="qr-code" ></div>
+            <div style="display: flex; flex-direction:column; gap: 20px; justify-content: center; align-items: center;">
+                <img src="assets/logo/logo.png" style=" width: 80%; height: auto;">
+                <h4 class="semi-bold font-blue">EASYWEBPH</h4>
+            </div>
+        </div>
+        <div class="menu-3" style="display: flex;justify-content: center;align-items: center;">
+            <h2 class="bold font-black text-center" style="width: 80%;">THANK YOU FOR CHOOSING EASYWEB PH! WE ARE HOPING TO SEE YOU SOON.</h2>
+        </div>
     </div>
-
+    <!-- DEPENDENCIES -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <!-- SCRIPTS -->
     <script>
         // LAYOUT SELECTION
         const layoutOptions =      document.getElementById("layout-options");
@@ -124,9 +136,10 @@
         const savePhoto =          document.getElementById("save-photo");
     </script>
     <script src="scripts/layout_map.js"></script> <!-- LAYOUT MAP -->
-    <script src="scripts/layout.js"></script> <!-- LAYOUT SELECTION -->
-    <script src="scripts/camera.js"></script> <!-- CAMERA-->
-    <script src="scripts/preview.js"></script> <!-- PREVIEW-->
+    <script src="scripts/layout.js"></script>     <!-- LAYOUT SELECTION -->
+    <script src="scripts/camera.js"></script>     <!-- CAMERA-->
+    <script src="scripts/preview.js"></script>    <!-- PREVIEW-->
+    <script src="scripts/qr_code.js"></script>    <!-- QR CODE-->
 
 
 

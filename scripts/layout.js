@@ -98,3 +98,11 @@ function HidePreview(){
 function ShowPreview(){
     preview.classList.remove("hidden")
 }
+// HIDE QR
+function HideQR(){
+    qrCode.classList.add("hidden")
+}
+// SHOW QR
+function ShowQR(){
+    qrCode.classList.remove("hidden")
+}

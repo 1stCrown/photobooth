@@ -48,7 +48,29 @@ function buildPreviewCard(){
 
 
 //SAVE PHOTO
+savePhoto.addEventListener("click", async function () {
 
+    // the div you want to save
+    const targetDiv = document.getElementById("card-preview");
+
+    // convert div to canvas
+    const canvas = await html2canvas(targetDiv);
+
+    // convert canvas to image
+    const image = canvas.toDataURL("image/png");
+
+    // create download link
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "photobooth.png";
+
+    // trigger download
+    link.click();
+
+    generateQR(image);
+    HidePreview();
+    ShowQR();
+});
 
 
 //RETAKE PHOTO
