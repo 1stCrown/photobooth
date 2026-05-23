@@ -31,11 +31,13 @@ timerDropdown.addEventListener("click", function () {
 document.getElementById("capture").addEventListener("click", async function () {
     if (selectedTime <= 0) selectedTime = 10;
     photos.length = 0;
-    
+
     for (let i = layouts[selectedLayout].shots; i > 0; i--) {
 
         console.log(i);
-        /*
+        frame.classList.remove("hidden");
+        Frame();
+        
         timerText.textContent = "CAMERA";
         timerText.classList.remove('hidden');
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -46,15 +48,16 @@ document.getElementById("capture").addEventListener("click", async function () {
         timerText.textContent = "FLASH";
         flash.classList.remove("removed");
         flash.style.animation = "flashFade 600ms ease-out";
-        */
+        
         TakePicture();
-        /*
+        
         await new Promise(resolve => setTimeout(resolve, 500));
         flash.classList.add("removed");
         await new Promise(resolve => setTimeout(resolve, 500));
         timerText.classList.add('hidden');
-        */
+        
     }
+    frame.classList.add("hidden");
 
     HideCamera();
     buildPreviewCard();
@@ -66,9 +69,9 @@ document.getElementById("capture").addEventListener("click", async function () {
 function TakePicture() {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
-    
+
     const shotIndex = photos.length;
-    
+
     const ratioW = layouts[selectedLayout].shotRatio[shotIndex].w;
     const ratioH = layouts[selectedLayout].shotRatio[shotIndex].h;
 
@@ -114,7 +117,8 @@ function TakePicture() {
         cropY = (videoHeight - cropHeight) / 2;
     }
 
-    // draw cropped image
+    // draw webcam frame
+    ctx.filter = effects[selectedEffect]?.filter || "none";
     ctx.drawImage(
         video,
         cropX,
@@ -126,6 +130,15 @@ function TakePicture() {
         outputWidth,
         outputHeight
     );
+    ctx.filter = "none";
+
+    // apply blend effect
+    const effectOption = effects[selectedEffect];
+    if (effectOption.blendmode) {
+        ctx.globalCompositeOperation = effectOption.blendmode;
+        ctx.fillStyle = effectOption.blendcolor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
     // save final cropped image
     const image = canvas.toDataURL("image/png");
@@ -135,4 +148,95 @@ function TakePicture() {
     console.log("Photos:", photos);
 }
 
+// FILTER
+for (const [key, effectOption] of Object.entries(effects)) {
+    const filterOption = document.createElement("div");
+    filterOption.classList.add("button-square");
+
+    const sample = document.createElement("img");
+    sample.src = "assets/sample.jpg";
+    sample.style.width = "100%";
+    sample.style.height = "100%";
+    sample.style.objectFit = "cover";
+
+    sample.style.position = "absolute";
+    sample.style.top = 0;
+    sample.style.left = 0;
+
+    filterOption.style.position = "relative";
+    filterOption.style.overflow = "hidden";
+    filterOption.style.isolation = "isolate";
+
+    filterOption.appendChild(sample);
+
+    if (effectOption.blendmode) {
+        const blendmode = document.createElement("div");
+
+        blendmode.style.width = "100%";
+        blendmode.style.height = "100%";
+
+        blendmode.style.position = "absolute";
+        blendmode.style.top = 0;
+        blendmode.style.left = 0;
+
+        blendmode.style.backgroundColor = effectOption.blendcolor;
+        blendmode.style.mixBlendMode = effectOption.blendmode;
+        filterOption.appendChild(blendmode);
+    }
+    if (effectOption.filter) {
+        sample.style.filter = effectOption.filter;
+    }
+    filterOption.addEventListener("click", function () {
+        selectedEffect = key;
+        console.log("Selected Effect: " + selectedEffect);
+        // Add visual feedback for selected effect
+        document.querySelectorAll('.button-square').forEach(el => el.classList.remove('selected'));
+        filterOption.classList.add('selected');
+
+        for (const rule of sheet.cssRules) {
+            if (rule.selectorText === ".effect") {
+                rule.style.mixBlendMode = "";
+                rule.style.backgroundColor = "";
+            }
+            if (rule.selectorText === ".filter") {
+                rule.style.filter = "";
+            }
+        }
+
+        if (effectOption.blendmode) {
+            for (const rule of sheet.cssRules) {
+                if (rule.selectorText === ".effect") {
+                    rule.style.mixBlendMode = effectOption.blendmode;
+                    rule.style.backgroundColor = effectOption.blendcolor;
+                }
+            }
+        }
+        if (effectOption.filter) {
+            for (const rule of sheet.cssRules) {
+                if (rule.selectorText === ".filter") {
+                    rule.style.filter = effectOption.filter;
+                }
+            }
+        }
+
+    });
+    effectOptions.appendChild(filterOption);
+}
+
+// FRAME
+function Frame(){
+
+    const captureheight = document.documentElement.scrollHeight * 0.9;
+    const capturewidth = layouts[selectedLayout].shotRatio[photos.length].w / layouts[selectedLayout].shotRatio[photos.length].h * captureheight;
+    frame.style.width = capturewidth + "px";
+    frame.style.height = captureheight + "px";
+
+    const smallerDimension = Math.min(capturewidth, captureheight);
+    const borderLength = smallerDimension * 0.3;
+
+    for (const border of borders) {
+        border.style.width = borderLength + "px";
+        border.style.height = borderLength + "px";
+    }
+}
 

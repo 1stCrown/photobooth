@@ -32,11 +32,22 @@
 
     <!-- CAMERA MODE -->
     <div>
-        <video id="camera-bg" class="hidden" autoplay playsinline></video>
+
+        <video id="camera-bg" class="hidden filter" autoplay playsinline></video>
+        <div id="effect" class="effect centered hidden" style="width: 100%; height: 100%;"></div><!-- Layout selection -->
+        <div id="frame" class="frame centered hidden">
+            <div id="top-left" class="top-left"></div>
+            <div id="top-right" class="top-right"></div>
+            <div id="bottom-left" class="bottom-left"></div>
+            <div id="bottom-right" class="bottom-right"></div>
+
+        </div>
 
         <div id="booth-menu" class="booth-options flex-row gap-10 bottom-centered hidden">
             <img src="assets/logo/logo.png" alt="Photo Booth Logo" class="logo" style="width: auto; height: 75px;">
-            <div style="width: 2px; height: 100%; background-color: #000000;"></div>
+            <div class="h-line"></div>
+            <div id="effects-options" class="flex-row gap-10"></div>
+            <div class="h-line"></div>
             <div>
                 <div id="set-timer-dropdown" class="set-timer removed">
                     <div id="10 sec" value="10 sec" class="set-timer-option">
@@ -59,7 +70,7 @@
                 </div>
 
             </div>
-            <div id="capture" class="primary-button-2">
+            <div id="capture" class="button-primary">
                 <h5 class="bold center font-white" style="width: 100%;">CAPTURE</h5>
             </div>
         </div>
@@ -78,13 +89,13 @@
         <div class="flex-column gap-50" style="height: 100%; width: 100%;">
             <div class="menu-3"></div>
             <div style="width: 100%;" class="menu-2 flex-row gap-10">
-                <div id="back-to-layout" class="button-2">
+                <div id="back-to-layout" class="button">
                     <h5 class="bold text-center" style="width:100%">BACK TO LAYOUT</h5>
                 </div>
-                <div id="retake-photo" class="button-2">
+                <div id="retake-photo" class="button">
                     <h5 class="bold text-center" style="width:100%">RETAKE PHOTO</h5>
                 </div>
-                <div id="save-photo" class="primary-button-2">
+                <div id="save-photo" class="button-primary">
                     <h5 class="bold text-center font-white" style="width: 100%;">SAVE PHOTO</h5>
                 </div>
                 <div id="back-to-layout"></div>
@@ -92,54 +103,30 @@
         </div>
     </div>
 
-    <!-- SAVE PHOTO --> 
+    <!-- SAVE PHOTO -->
     <div id="save-photo-screen" class="centered flex-row gap-50 hidden" style="width:90%; height:90%;">
         <div class="qr-card">
-            <div class="blank-photo qr" id="qr-code" ></div>
+            <div class="blank-photo qr" id="qr-code"></div>
             <div style="display: flex; flex-direction:column; gap: 20px; justify-content: center; align-items: center;">
                 <img src="assets/logo/logo.png" style=" width: 80%; height: auto;">
                 <h4 class="semi-bold font-blue">EASYWEBPH</h4>
             </div>
         </div>
         <div class="menu-3" style="display: flex;justify-content: center;align-items: center;">
-            <h2 class="bold font-black text-center" style="width: 80%;">THANK YOU FOR CHOOSING EASYWEB PH! WE ARE HOPING TO SEE YOU SOON.</h2>
+            <h2 class="bold font-black text-center" style="width: 80%;">THANK YOU FOR CHOOSING EASYWEB PH! WE ARE HOPING
+                TO SEE YOU SOON.</h2>
         </div>
     </div>
+
     <!-- DEPENDENCIES -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
     <!-- SCRIPTS -->
-    <script>
-        // LAYOUT SELECTION
-        const layoutOptions =      document.getElementById("layout-options");
-        const layoutSelection =    document.getElementById("layout-selection");
-        const backgroundGradient = document.getElementById("back-gradient");
-        // CAMERA MODE
-        const video =              document.getElementById("camera-bg");
-        const boothMenu =          document.getElementById("booth-menu");
-        const timerDropdown =      document.getElementById("selected");
-        const timerOptions =       document.getElementById("set-timer-dropdown");
-        const timerText =          document.getElementById("timer");
-        const flash =              document.getElementById("flash");
-        const photos = [];
-        selectedTime = 0;
-        const timers = {
-            10:                    document.getElementById("10 sec"),
-            5:                     document.getElementById("5 sec"),
-            3:                     document.getElementById("3 sec"),
-        };
-        // PREVIEW
-        const preview =            document.getElementById("preview");
-        const previewCard =        document.getElementById("card-preview");
-        const backToLayout =       document.getElementById("back-to-layout");
-        const retakePhoto =        document.getElementById("retake-photo");
-        const savePhoto =          document.getElementById("save-photo");
-    </script>
-    <script src="scripts/layout_map.js"></script> <!-- LAYOUT MAP -->
-    <script src="scripts/layout.js"></script>     <!-- LAYOUT SELECTION -->
-    <script src="scripts/camera.js"></script>     <!-- CAMERA-->
-    <script src="scripts/preview.js"></script>    <!-- PREVIEW-->
-    <script src="scripts/qr_code.js"></script>    <!-- QR CODE-->
+    <script src="scripts/variables.js"></script> <!-- LAYOUT MAP -->
+    <script src="scripts/layout.js"></script> <!-- LAYOUT SELECTION -->
+    <script src="scripts/camera.js"></script> <!-- CAMERA-->
+    <script src="scripts/preview.js"></script> <!-- PREVIEW-->
+    <script src="scripts/qr_code.js"></script> <!-- QR CODE-->
 
 
 

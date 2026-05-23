@@ -82,11 +82,13 @@ function ShowLayout(){
 // HIDE CAMERA
 function HideCamera(){
     video.classList.add("hidden");
+    effect.classList.add("hidden");
     boothMenu.classList.add("hidden");
 }
 // SHOW CAMERA
 function ShowCamera(){
     video.classList.remove("hidden");
+    effect.classList.remove("hidden");
     boothMenu.classList.remove("hidden");
 }
 
