@@ -18,6 +18,7 @@ const layoutSelection =     document.getElementById("layout-selection");
 const backgroundGradient =  document.getElementById("back-gradient");
 
 // CAMERA MODE
+const cameraMode =          document.getElementById("camera-mode");
 const video =               document.getElementById("camera-bg");
 const boothMenu =           document.getElementById("booth-menu");
 const timerDropdown =       document.getElementById("selected");
@@ -37,7 +38,7 @@ const borders = [
 const sheet =               document.styleSheets[0];
 const photos = [];
 selectedTime = 0;
-selectedEffect = "0";
+selectedEffect = "none";
 const timers = {
     10: document.getElementById("10 sec"),
     5:  document.getElementById("5 sec"),

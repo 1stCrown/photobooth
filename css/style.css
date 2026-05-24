@@ -200,12 +200,6 @@ p{font-size: 10px;}
     transform: translateX(-50%);
 }
 
-
-.hidden{
-    /*display: none;*/
-    visibility: hidden;
-
-}
 .removed{
     display: none;
 }
@@ -384,4 +378,21 @@ p{font-size: 10px;}
     right: 0;
     border-bottom: 30px solid rgba(255, 255, 255, 1);
     border-right: 30px solid rgba(255, 255, 255, 1);
+}
+
+/* --- EFFECTS --- */
+.page-transition{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+.hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }

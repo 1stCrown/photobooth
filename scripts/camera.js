@@ -47,7 +47,7 @@ document.getElementById("capture").addEventListener("click", async function () {
         }
         timerText.textContent = "FLASH";
         flash.classList.remove("removed");
-        flash.style.animation = "flashFade 600ms ease-out";
+        flash.style.animation = "flashFade 600ms ease-out forwards";
         
         TakePicture();
         
