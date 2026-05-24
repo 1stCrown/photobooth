@@ -44,10 +44,56 @@ const timers = {
     3:  document.getElementById("3 sec"),
 };
 const effects = {
-    "0":{},
-    "1":{blendmode: "multiply", blendcolor: "rgb(255, 0, 0, 0.7)",},
-    "2":{filter: "sepia(1)"},
-    "3":{filter: "hue-rotate(90deg)"},
+
+    "none": {},
+
+    // PRIMARY COLORS
+    "red": {
+        blendmode: "multiply",
+        blendcolor: "rgba(255,0,0,0.25)"
+    },
+
+    "blue": {
+        blendmode: "multiply",
+        blendcolor: "rgba(0,120,255,0.25)"
+    },
+
+
+    // SECONDARY COLORS
+    "green": {
+        blendmode: "multiply",
+        blendcolor: "rgba(0,255,120,0.25)"
+    },
+
+    "purple": {
+        blendmode: "overlay",
+        blendcolor: "rgba(150,0,255,0.25)"
+    },
+
+    // POPULAR EFFECTS
+    "vintage": {
+        filter: "sepia(0.6) contrast(1.15) brightness(0.95) saturate(0.8)"
+    },
+
+    "black&white": {
+        filter: "grayscale(1) contrast(1.1)"
+    },
+
+    "vhs": {
+        filter: "contrast(1.4) saturate(1.5) hue-rotate(-10deg)"
+    },
+
+    "cinematic": {
+        filter: "contrast(1.25) brightness(0.9) saturate(0.85)"
+    },
+
+    "highcontrast": {
+        filter: "contrast(1.8) saturate(1.2)"
+    },
+
+    "washedout": {
+        filter: "brightness(1.15) contrast(0.8) saturate(0.7)"
+    }
 };
 
 // PREVIEW
